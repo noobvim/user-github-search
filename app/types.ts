@@ -1,6 +1,7 @@
 export type GitHubUser = {
   avatar_url: string | null;
   bio: string | null;
+  company: string | null;
   location: string | null;
   html_url: string | null;
   twitter_username: string | null;
