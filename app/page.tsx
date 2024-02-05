@@ -5,20 +5,13 @@ import { Header } from "@/app/ui/header";
 export default async function Home() {
   let user = null;
   try {
-    user = await getUserByUsername();
+    user = await getUserByUsername("octfvfocat");
   } catch (error) {
     console.log("@@ error", error);
   }
 
-  if (!user) {
-    return null;
-  }
-
   return (
-    <main
-      className="flex min-h-screen flex-col items-center p-24"
-      style={{ margin: "0 auto", maxWidth: 1000 }}
-    >
+    <main className="p-24 max-w-5xl m-auto">
       <Header />
       <Main defaultUser={user} />
     </main>

@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { SearchForm } from "@/app/ui/search-form";
+import { UserNotFound } from "@/app/ui/user-not-found";
 import { GitHubUser } from "@/app/types";
 import { User } from "@/app/ui/user";
 
 type Props = {
-  defaultUser: GitHubUser;
+  defaultUser: GitHubUser | null | undefined;
 };
 
 export function Main({ defaultUser }: Props) {
@@ -15,7 +16,7 @@ export function Main({ defaultUser }: Props) {
   return (
     <>
       <SearchForm setUser={setUser} />
-      <User user={user} />
+      {!user?.login ? <UserNotFound /> : <User user={user} />}
     </>
   );
 }

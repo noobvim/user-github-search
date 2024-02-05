@@ -65,3 +65,7 @@ a:hover {
 .text-blue-50 {
   color: rgb(var(--blue-rgb));
 }
+
+.bg-blue-500 {
+  background-color: rgb(var(--blue-rgb));
+}

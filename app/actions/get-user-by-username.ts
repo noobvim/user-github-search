@@ -1,10 +1,14 @@
 import type { GitHubUser } from "@/app/types";
 
-export const getUserByUsername = async (
+export const getUserByUsernameFormAction = async (
   _prev,
   formData
+): Promise<GitHubUser | undefined> =>
+  getUserByUsername(formData.get("username"));
+
+export const getUserByUsername = async (
+  username: string
 ): Promise<GitHubUser | undefined> => {
-  const username = formData?.get("username") || "octocat";
   try {
     const response = await fetch(
       `${process.env.GITHUB_REST_URL}/users/${username}`,
