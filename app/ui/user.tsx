@@ -1,6 +1,6 @@
 "use client";
 
-import classNames from "classNames";
+import classnames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import moment from "moment";
@@ -54,7 +54,7 @@ export function User({ user }: Props) {
         </div>
         <div className="grid grid-cols-1 gap-4 pt-8 pb-8">
           <div
-            className={classNames("text-sm flex", !user.bio && "opacity-50")}
+            className={classnames("text-sm flex", !user.bio && "opacity-50")}
           >
             {user.bio || "This profile has no bio"}
           </div>

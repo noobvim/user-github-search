@@ -1,4 +1,4 @@
-import classNames from "classNames";
+import classnames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const UserLink = ({ icon, link, value }: Props) => (
-  <div className={classNames("text-sm flex truncate", !value && "opacity-50")}>
+  <div className={classnames("text-sm flex truncate", !value && "opacity-50")}>
     <div className="inset-y-0 start-0 flex items-center pr-3 pointer-events-none">
       <Image
         className="white"
