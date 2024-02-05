@@ -1,3 +1,5 @@
+"use server";
+
 import type { GitHubUser } from "@/app/types";
 
 export const getUserByUsernameFormAction = async (
@@ -11,7 +13,7 @@ export const getUserByUsername = async (
 ): Promise<GitHubUser | undefined> => {
   try {
     const response = await fetch(
-      `${process.env.GITHUB_REST_URL}/users/${username}`,
+      `${process.env.GITHUB_URL}/users/${username}`,
       {
         headers: {
           Accept: "application/json",

@@ -5,7 +5,7 @@ import { Header } from "@/app/ui/header";
 export default async function Home() {
   let user = null;
   try {
-    user = await getUserByUsername("octfvfocat");
+    user = await getUserByUsername("octocat");
   } catch (error) {
     console.log("@@ error", error);
   }
