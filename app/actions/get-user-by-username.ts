@@ -3,10 +3,10 @@
 import type { GitHubUser } from "@/app/types";
 
 export const getUserByUsernameFormAction = async (
-  _prev,
-  formData
+  _prev: unknown,
+  formData: FormData
 ): Promise<GitHubUser | undefined> =>
-  getUserByUsername(formData.get("username"));
+  getUserByUsername(formData.get("username") as string);
 
 export const getUserByUsername = async (
   username: string
