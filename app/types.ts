@@ -13,3 +13,8 @@ export type GitHubUser = {
   public_repos: number | null;
   total_private_repos: number | null;
 };
+
+export type GitHubUserResponse = {
+  data: GitHubUser | null;
+  error: string | null;
+};

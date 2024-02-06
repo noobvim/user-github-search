@@ -1,30 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
-import { useFormState } from "react-dom";
 import Image from "next/image";
-import { getUserByUsernameFormAction } from "@/app/actions/get-user-by-username";
-import { InlineUserNotFound } from "@/app/ui/user-not-found";
-import type { GitHubUser } from "@/app/types";
+import type { GitHubUserResponse } from "@/app/types";
+import { useSearchForm } from "@/app/hooks/use-search-form";
+
+import { InlineUserNotFound } from "./user-not-found";
+import { Submit } from "./submit";
 
 type Props = {
-  setUser: (user: GitHubUser) => void;
+  setUser: (user: GitHubUserResponse) => void;
 };
 
 export function SearchForm({ setUser }: Props) {
-  const [userState, formAction] = useFormState(
-    getUserByUsernameFormAction,
-    undefined
-  );
-  const hasErrorMessage =
-    // @ts-ignore: ts(2339) Need to fix this ts error, but its the end of the day.
-    (userState?.message as unknown as string) === "Not Found";
-
-  useEffect(() => {
-    if (userState) {
-      setUser(userState);
-    }
-  }, [userState, setUser]);
+  const { userState, formAction } = useSearchForm({ setUser });
 
   return (
     <div className="w-full area-bg-2 p-2 rounded-xl mt-4">
@@ -38,19 +26,14 @@ export function SearchForm({ setUser }: Props) {
             alt="GitHub User Avatar Image"
           />
         </div>
-        {hasErrorMessage && <InlineUserNotFound />}
+        {userState?.error === "Not Found" && <InlineUserNotFound />}
         <input
           className="area-bg-2 w-full text-lg !outline-none"
           name="username"
           placeholder="Search GitHub username..."
           type="text"
         />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 border border-blue-700 rounded-xl ml-2"
-          type="submit"
-        >
-          Search
-        </button>
+        <Submit />
       </form>
     </div>
   );

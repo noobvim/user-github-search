@@ -1,19 +1,19 @@
 "use server";
 
-import type { GitHubUser } from "@/app/types";
+import type { GitHubUserResponse } from "@/app/types";
 
 export const getUserByUsernameFormAction = async (
   _prev: unknown,
   formData: FormData
-): Promise<GitHubUser | undefined> =>
+): Promise<GitHubUserResponse> =>
   getUserByUsername(formData.get("username") as string);
 
 export const getUserByUsername = async (
-  username: string
-): Promise<GitHubUser | undefined> => {
+  username?: string
+): Promise<GitHubUserResponse> => {
   try {
     const response = await fetch(
-      `${process.env.GITHUB_URL}/users/${username}`,
+      `${process.env.GITHUB_URL}/users/${username || process.env.GITHUB_DEFAULT_USER}`,
       {
         headers: {
           Accept: "application/json",
@@ -23,9 +23,11 @@ export const getUserByUsername = async (
       }
     );
     const body = await response.json();
+    const data = body.message !== "Not Found" ? body : null;
+    const error = body.message === "Not Found" ? body.message : null;
 
-    return body;
+    return { data, error };
   } catch (error) {
-    console.log("@@ error", error);
+    return { data: null, error: "An unexpected error occurred" };
   }
 };

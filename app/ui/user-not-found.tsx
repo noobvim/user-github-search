@@ -5,7 +5,7 @@ export const UserNotFound = () => (
 );
 
 export const InlineUserNotFound = () => (
-  <div className="text-red-500 absolute right-36 top-4">
+  <div className="text-red-500 absolute right-44 top-4">
     No results.
   </div>
 );
