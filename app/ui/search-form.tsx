@@ -17,7 +17,7 @@ export function SearchForm({ setUser }: Props) {
     undefined
   );
   const hasErrorMessage =
-    // @ts-ignore: ts(2339)
+    // @ts-ignore: ts(2339) Need to fix this ts error, but its the end of the day.
     (userState?.message as unknown as string) === "Not Found";
 
   useEffect(() => {

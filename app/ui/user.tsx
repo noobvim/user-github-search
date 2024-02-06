@@ -17,7 +17,7 @@ export function User({ user }: Props) {
     ? `http://twitter.com/${user.twitter_username}`
     : user.twitter_username;
   const companyLink = user.company
-    ? `http://github.com/${user.company.slice(1)}`
+    ? `http://github.com/${user.company.replace('@', '')}`
     : user.company;
 
   return (
