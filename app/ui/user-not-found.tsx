@@ -3,3 +3,9 @@ export const UserNotFound = () => (
     User not found. Try searching for a different user.
   </div>
 );
+
+export const InlineUserNotFound = () => (
+  <div className="text-red-500 absolute right-36 top-4">
+    No results.
+  </div>
+);

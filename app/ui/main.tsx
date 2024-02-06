@@ -13,6 +13,7 @@ type Props = {
 export function Main({ defaultUser }: Props) {
   const [user, setUser] = useState(defaultUser);
 
+  // There are probably better ways to check for a non-existent user, but this seemed to suffice for the time being.
   return (
     <>
       <SearchForm setUser={setUser} />

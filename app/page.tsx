@@ -5,6 +5,7 @@ import { Header } from "@/app/ui/header";
 export default async function Home() {
   let user = null;
   try {
+    // make server request before client resources are loaded to ensure a fast initial responsiveness to the user
     user = await getUserByUsername("octocat");
   } catch (error) {
     console.log("@@ error", error);

@@ -17,7 +17,7 @@ export const getUserByUsername = async (
       {
         headers: {
           Accept: "application/json",
-          Authorization: `Bearer ${process.env.GITHUB_ACCCESS_TOKEN}`,
+          Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
           "X-GitHub-Api-Version": "2022-11-28",
         },
       }

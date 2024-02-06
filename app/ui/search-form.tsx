@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import Image from "next/image";
 import { getUserByUsernameFormAction } from "@/app/actions/get-user-by-username";
+import { InlineUserNotFound } from "@/app/ui/user-not-found";
 import type { GitHubUser } from "@/app/types";
 
 type Props = {
@@ -11,16 +12,13 @@ type Props = {
 };
 
 export function SearchForm({ setUser }: Props) {
-  const [state, formAction] = useFormState(
-    getUserByUsernameFormAction,
-    undefined
-  );
+  const [userState, formAction] = useFormState(getUserByUsernameFormAction, undefined);
 
   useEffect(() => {
-    if (state) {
-      setUser(state);
+    if (userState) {
+      setUser(userState);
     }
-  }, [state, setUser]);
+  }, [userState, setUser]);
 
   return (
     <div className="w-full area-bg-2 p-2 rounded-xl mt-4">
@@ -34,6 +32,7 @@ export function SearchForm({ setUser }: Props) {
             alt="GitHub User Avatar Image"
           />
         </div>
+        {!userState?.login && <InlineUserNotFound />}
         <input
           className="area-bg-2 w-full text-lg !outline-none"
           name="username"
