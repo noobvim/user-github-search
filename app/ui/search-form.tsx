@@ -12,7 +12,10 @@ type Props = {
 };
 
 export function SearchForm({ setUser }: Props) {
-  const [userState, formAction] = useFormState(getUserByUsernameFormAction, undefined);
+  const [userState, formAction] = useFormState(
+    getUserByUsernameFormAction,
+    undefined
+  );
 
   useEffect(() => {
     if (userState) {
@@ -32,7 +35,7 @@ export function SearchForm({ setUser }: Props) {
             alt="GitHub User Avatar Image"
           />
         </div>
-        {!userState?.login && <InlineUserNotFound />}
+        {userState?.message === "Not Found" && <InlineUserNotFound />}
         <input
           className="area-bg-2 w-full text-lg !outline-none"
           name="username"
