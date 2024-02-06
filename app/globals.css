@@ -27,9 +27,8 @@ body {
   }
 }
 
-h1 {
-  font-size: 30px;
-  font-weight: bold;
+a:hover {
+  text-decoration: underline;
 }
 
 .white {
@@ -44,22 +43,8 @@ h1 {
   background-color: rgb(var(--component-rgb));
 }
 
-#form {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-input {
-  background-color: rgb(var(--component-rgb)) !important;
-}
-
 .root-grid {
   grid-template-columns: 100px auto;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 .text-blue-50 {
