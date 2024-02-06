@@ -4,7 +4,9 @@ import classnames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import moment from "moment";
+
 import type { GitHubUser } from "@/app/types";
+
 import { UserLink } from "./user-link";
 
 type Props = {

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+
 import type { GitHubUserResponse } from "@/app/types";
 import { useSearchForm } from "@/app/hooks/use-search-form";
 

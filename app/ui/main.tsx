@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { SearchForm } from "@/app/ui/search-form";
 import { UserNotFound } from "@/app/ui/user-not-found";
 import { GitHubUserResponse } from "@/app/types";

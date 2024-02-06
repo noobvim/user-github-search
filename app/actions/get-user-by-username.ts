@@ -13,18 +13,20 @@ export const getUserByUsername = async (
 ): Promise<GitHubUserResponse> => {
   try {
     const response = await fetch(
-      `${process.env.GITHUB_URL}/users/${username || process.env.GITHUB_DEFAULT_USER}`,
+      `${process.env.GITHUB_URL}/users/${
+        username || process.env.GITHUB_DEFAULT_USER
+      }`,
       {
         headers: {
-          Accept: "application/json",
+          Accept: "application/vnd.github+json",
           Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
-          "X-GitHub-Api-Version": "2022-11-28",
         },
       }
     );
+
     const body = await response.json();
-    const data = body.message !== "Not Found" ? body : null;
-    const error = body.message === "Not Found" ? body.message : null;
+    const data = response.status === 200 ? body : null;
+    const error = response.status === 404 ? body.message : null;
 
     return { data, error };
   } catch (error) {

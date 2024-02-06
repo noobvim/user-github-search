@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
+
 import type { GitHubUserResponse } from "@/app/types";
 import { getUserByUsernameFormAction } from "@/app/actions/get-user-by-username";
 
