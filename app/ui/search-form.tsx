@@ -16,6 +16,9 @@ export function SearchForm({ setUser }: Props) {
     getUserByUsernameFormAction,
     undefined
   );
+  const hasErrorMessage =
+    // @ts-ignore: ts(2339)
+    (userState?.message as unknown as string) === "Not Found";
 
   useEffect(() => {
     if (userState) {
@@ -35,7 +38,7 @@ export function SearchForm({ setUser }: Props) {
             alt="GitHub User Avatar Image"
           />
         </div>
-        {userState?.message === "Not Found" && <InlineUserNotFound />}
+        {hasErrorMessage && <InlineUserNotFound />}
         <input
           className="area-bg-2 w-full text-lg !outline-none"
           name="username"
